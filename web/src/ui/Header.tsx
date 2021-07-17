@@ -74,6 +74,7 @@ export default function Header(): React.ReactElement {
         id="basic-navbar-nav"
         className="justify-content-between"
       >
+        <div></div>
         <AccountMenu />
       </Navbar.Collapse>
     </Navbar>
