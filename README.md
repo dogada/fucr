@@ -1,6 +1,6 @@
 # FUCR — FUll Copy Right
 
-A digital publishing system where anyone can create and copy anything. When you like something, you get a copy of it, which is stored on your smartphone or comgputer. Such a copy can be shared with your subscribers, even if the original source is not available for some reason. Important things get more copies in different independent locations and are therefore less likely to get lost or censored.
+A digital publishing system where anyone can create and copy anything. When you like something, you get a copy of it, which is stored on your smartphone or computer. Such a copy can be shared with your subscribers, even if the original source is not available for some reason. Important things get more copies in different independent locations and are therefore less likely to get lost or censored.
 
 Each piece of content is signed by the author using cryptography (as in blockchain technologies, where users sign transactions with their private keys).
 
