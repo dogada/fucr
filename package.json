@@ -24,9 +24,7 @@
     "stop": "docker-compose stop",
     "prod": "npm run build:prod && npm run prod:reload",
     "prod:reload": "docker service update --force fucr_dev_web",
-    "dc:user": "USER_ID=$(id -u):$(id -g) docker-compose",
-    "test:e2e": "npm run dc:user -- run --rm e2e npx codeceptjs run --steps",
-    "e2e:shell": "npm run dc:user -- run --rm e2e bash"
+    "dc:user": "USER_ID=$(id -u):$(id -g) docker-compose"
   },
   "repository": {
     "type": "git",
