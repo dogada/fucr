@@ -4,7 +4,7 @@
   "description": "FUCR",
   "version": "0.0.1",
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect=0.0.0.0' next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
