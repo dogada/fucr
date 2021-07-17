@@ -31,18 +31,20 @@ function AccountMenu() {
       drop="down"
       variant="outline-secondary"
     >
-      {me ? (
-        [
-          <MenuItem key="profile" href="#">
-            Profile
-          </MenuItem>,
-          <MenuItem key="account" href="/auth/account">
-            Account
-          </MenuItem>
-        ]
-      ) : (
-        <MenuItem href="/auth/login">Sign in</MenuItem>
-      )}
+      {me
+        ? [
+            <MenuItem key="profile" href="#">
+              Account
+            </MenuItem>
+          ]
+        : [
+            <MenuItem key="in" href="/auth/import">
+              Import account
+            </MenuItem>,
+            <MenuItem key="up" href="/auth/create">
+              Create account
+            </MenuItem>
+          ]}
     </DropdownButton>
   )
 }
