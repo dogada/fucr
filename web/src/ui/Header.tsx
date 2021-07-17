@@ -33,7 +33,7 @@ function AccountMenu() {
     >
       {me
         ? [
-            <MenuItem key="profile" href="#">
+            <MenuItem key="account" href="/auth/account">
               Account
             </MenuItem>
           ]
