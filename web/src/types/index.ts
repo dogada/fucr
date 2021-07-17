@@ -12,3 +12,9 @@ export type User = {
   name: string
   id: Id
 }
+
+export type Message = {
+  id: string
+  content: string
+  user?: User
+}

@@ -1,10 +1,10 @@
 import { HttpError } from '../lib/httperror'
 
-const VALID_TYPES = 'entity,category,note,field,fieldset'.split(',')
+const VALID_TYPES = 'title,message,comment'.split(',')
 
 export function getMaxContentLength(type: string): number {
   validateType(type)
-  return { category: 25, entity: 40, field: 25 }[type] || 500
+  return { title: 25, message: 500, comment: 200 }[type] || 500
 }
 export function validateType(type: string): void {
   if (!VALID_TYPES.includes(type))
