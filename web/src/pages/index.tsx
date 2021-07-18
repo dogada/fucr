@@ -5,7 +5,6 @@ import { loremIpsum, name, username, Avatar } from 'react-lorem-ipsum'
 import Layout from '~/ui/Layout'
 import { useMe } from '~/store'
 import Button from 'react-bootstrap/Button'
-import clsx from 'clsx'
 
 export const HomePage: NextPage = () => {
   const { me } = useMe()
@@ -14,15 +13,20 @@ export const HomePage: NextPage = () => {
       <div className="jumbotron">
         <h1>FUCR — FUll Copy Right</h1>
         {!me && (
-          <p className="lead">
-            A digital publishing system where anyone can create and copy
-            anything. When you like something, you get a copy of it, which is
-            stored on your smartphone or computer. We do not own or control your
-            data. Your data belongs to you. We simply provide a way to
-            distribute your data to technologically and politically independent
-            data providers in order to minimize the risk of censorship of any
-            kind.
-          </p>
+          <>
+            <p className="lead mt-3">
+              A digital publishing system where anyone can create and copy
+              anything. When you like something, you get a copy of it, which is
+              stored on your smartphone or computer.
+            </p>
+            <p className="lead">
+              We do not own or control your data. Your data belongs to you. We
+              simply provide a way to distribute your data to technologically
+              and politically independent data providers in order to minimize
+              the risk of censorship of any kind and to ensure that no data is
+              lost even after many years.
+            </p>
+          </>
         )}
         {me && (
           <h4 className="mt-4">

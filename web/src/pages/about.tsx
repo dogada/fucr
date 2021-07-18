@@ -36,11 +36,11 @@ const AboutPage: React.FunctionComponent = () => (
       things, the police should take care of it, not the censors.
     </p>
 
-    <p>
-      <Link href="/">
-        <a className="btn btn-primary">Start now</a>
-      </Link>
-    </p>
+    <p>Have questions? Our email: info@dogada.org.</p>
+
+    <Link href="/">
+      <a className="btn btn-primary">Start now</a>
+    </Link>
   </Layout>
 )
 
