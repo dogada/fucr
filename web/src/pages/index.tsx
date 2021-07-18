@@ -38,7 +38,7 @@ export const HomePage: NextPage = () => {
 function Setup() {
   return (
     <div>
-      <p>Looks like you are new here.</p>
+      <p>To start publishing and reading you need an account.</p>
       <p>
         Please
         <Button href="/auth/create" className="mx-2">
@@ -56,9 +56,7 @@ function Setup() {
 function Channel() {
   return (
     <div>
-      <label>
-        <h5>New message</h5>
-      </label>
+      <label>New message</label>
       <MessageForm type="message" onFinish={() => null} />
       <div className="mt-1">
         {loremIpsum({ p: 3 }).map((text) => (
