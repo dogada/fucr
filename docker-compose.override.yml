@@ -1,0 +1,23 @@
+# development config
+version: "3.4"
+services:
+  web:
+    command: npm run dev
+    image: "fucr_web_dev:${IMAGE_TAG:-latest}"
+    build:
+      target: dev
+    environment:
+      - NODE_ENV=development
+      - WEBSITE_URL=http://localhost:3000
+    volumes:
+      - ./web:/app
+      # use node_modules & .next from container
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "9230:9229"
+      - "3000:3000"
+    logging:
+      driver: "json-file"
+    healthcheck: # check health of production build only
+      disable: true
