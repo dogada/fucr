@@ -33,6 +33,9 @@ const AccountPage: React.FC<{ me: User }> = ({ me }) => {
         <dt className="col-sm-3">User id</dt>
         <dd className="col-sm-9">{me.id}</dd>
       </dl>
+      <Button variant="info" className="mt-4" type="submit">
+        Export account
+      </Button>
       <LogoutForm />
     </Layout>
   )
