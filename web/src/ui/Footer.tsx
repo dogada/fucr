@@ -5,7 +5,7 @@ import { ReactChild } from 'react'
 const NavItem = (props: { href: string; children: ReactChild }) => (
   <li className="nav-item">
     <Link href={props.href}>
-      <a className="nav-link">{props.children}</a>
+      <a className="nav-link text-white">{props.children}</a>
     </Link>
   </li>
 )
