@@ -3,13 +3,13 @@ import clsx from 'clsx'
 import React, { ReactElement, ReactNode } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitButton } from '~/lib/forms/SubmitButton'
-
+import { Types as AffinidiTypes } from '@affinidi/wallet-browser-sdk'
 type FormData = {
   username: string // email or phone number
 }
 
 const options = {
-  env: process.env.NEXT_PUBLIC_AFFINIDI_ENV,
+  env: process.env.NEXT_PUBLIC_AFFINIDI_ENV as AffinidiTypes.Env,
   apiKey: process.env.NEXT_PUBLIC_AFFINIDI_API_KEY
 }
 
