@@ -7,32 +7,35 @@ import { dispatchError } from '~/store'
 import { AFFINIDI_OPTIONS } from '~/config'
 
 type FormData = {
-  username: string // email or phone number
+  code: string // email or phone number
 }
 
-export function AffinidiSignInForm({
+export function AffinidiConfirmationCodeForm({
+  userToken,
   onFinish
 }: {
-  onFinish: (result: { username: string; token: string }) => void
+  userToken: string
+  onFinish: (result: { wallet?: unknown; error?: Error }) => void
 }): ReactElement {
   const {
     register,
     formState: { errors },
     handleSubmit
   } = useForm<FormData>({ defaultValues: {} })
-  const isInvalid = errors.username
+  const isInvalid = errors.code
 
   // TODO: add email validation
-  const onSubmit = async ({ username }: FormData) => {
-    if (errors.username || !username) return
+  const onSubmit = async ({ code }: FormData) => {
+    if (errors.code || !code) return
 
     try {
       console.log('token')
-      const token = await AffinidiWallet.initiateSignInPasswordless(
-        AFFINIDI_OPTIONS,
-        username
+      const wallet = await AffinidiWallet.confirmSignIn(
+        userToken,
+        code,
+        AFFINIDI_OPTIONS
       )
-      onFinish({ username, token })
+      onFinish({ wallet })
     } catch (error) {
       dispatchError(error as Error)
     }
@@ -43,17 +46,17 @@ export function AffinidiSignInForm({
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
-          name="username"
+          name="code"
           ref={register({ required: true })}
-          className={clsx(errors.username && 'is-invalid', 'form-control')}
-          aria-invalid={!!errors.username}
-          aria-label="Email or phone"
-          placeholder={`Email or mobile phone.`}
+          className={clsx(errors.code && 'is-invalid', 'form-control')}
+          aria-invalid={!!errors.code}
+          aria-label="Code"
+          placeholder={`Code (6 digits).`}
           required
         />
         <div className="mt-2" />
         <FormFooter>
-          <SubmitButton title="Sign In" disabled={!!isInvalid} />
+          <SubmitButton title="Submit" disabled={!!isInvalid} />
         </FormFooter>
       </form>
     </div>
