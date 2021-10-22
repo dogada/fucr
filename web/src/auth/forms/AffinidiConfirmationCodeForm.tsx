@@ -29,10 +29,10 @@ export function AffinidiConfirmationCodeForm({
     if (errors.code || !code) return
 
     try {
-      const wallet = await AffinidiWallet.confirmSignIn(
+      const { wallet } = await AffinidiWallet.completeSignInPasswordless(
+        AFFINIDI_OPTIONS,
         userToken,
-        code,
-        AFFINIDI_OPTIONS
+        code
       )
       onFinish({ wallet })
     } catch (error) {

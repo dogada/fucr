@@ -7,8 +7,7 @@ export * from './meta'
 
 export const AFFINIDI_OPTIONS: AffinidiTypes.SdkOptions = {
   env: process.env.NEXT_PUBLIC_AFFINIDI_ENV as AffinidiTypes.Env,
-  apiKey: process.env.NEXT_PUBLIC_AFFINIDI_API_KEY_HASH
-  //accessApiKey: process.env.NEXT_PUBLIC_AFFINIDI_API_KEY_HASH
+  apiKey: process.env.NEXT_PUBLIC_AFFINIDI_API_KEY
 }
 
 console.log(AFFINIDI_OPTIONS)
