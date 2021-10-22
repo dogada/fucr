@@ -49,10 +49,6 @@ function Setup() {
           Sign in using Affinidi
         </Button>
         or
-        <Button href="/auth/create" className="mx-2">
-          Create new account
-        </Button>{' '}
-        or
         <Button href="/auth/import" className="mx-2">
           Import existing account
         </Button>

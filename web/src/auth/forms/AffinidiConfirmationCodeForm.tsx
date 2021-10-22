@@ -29,7 +29,6 @@ export function AffinidiConfirmationCodeForm({
     if (errors.code || !code) return
 
     try {
-      console.log('token')
       const wallet = await AffinidiWallet.confirmSignIn(
         userToken,
         code,

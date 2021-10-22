@@ -11,10 +11,9 @@ type Screen = 'username' | 'code'
 const LoginPage: React.FunctionComponent = () => {
   const router = useRouter()
   const [screen, setScreen] = React.useState<Screen>('username')
-  const [token, setToken] = React.useState<string>()
+  const [token, setToken] = React.useState<unknown>()
   const { dispatch } = useMe()
   function login(user) {
-    //TODO: check code
     console.log('login', user)
     if (!user) return
     // TODO: prompt user to export account first
