@@ -45,6 +45,10 @@ function Setup() {
       <p>To start publishing and reading you need an account.</p>
       <p>
         Please
+        <Button href="/auth/signin" className="mx-2">
+          Sign in using Affinidi
+        </Button>
+        or
         <Button href="/auth/create" className="mx-2">
           Create new account
         </Button>{' '}

@@ -1,8 +1,8 @@
 # production config
-version: '3.4'
+version: "3.4"
 services:
   web:
-    image: 'fucr_web'
+    image: "fucr_web"
     build:
       context: ./web
       dockerfile: ./Dockerfile
@@ -11,3 +11,5 @@ services:
       - NODE_ENV=production
       - DEBUG
       - WEBSITE_URL
+      - NEXT_PUBLIC_AFFINIDI_ENV
+      - NEXT_PUBLIC_AFFINIDI_API_KEY
