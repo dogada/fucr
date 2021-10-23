@@ -42,15 +42,15 @@ export const HomePage: NextPage = () => {
 function Setup() {
   return (
     <div>
-      <p>To start publishing and reading you need an account.</p>
+      <p>To start publishing and reading you need an Affinidi account.</p>
       <p>
         Please
         <Button href="/auth/signin" className="mx-2">
-          Sign in using Affinidi
+          Sign in
         </Button>
         or
         <Button href="/auth/import" className="mx-2">
-          Import existing account
+          Import Affinidi wallet
         </Button>
       </p>
     </div>
