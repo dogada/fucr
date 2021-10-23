@@ -11,15 +11,17 @@ type FormData = {
 }
 
 export function AffinidiSignInForm({
+  username,
   onFinish
 }: {
+  username?: string
   onFinish: (result: { username: string; token: string }) => void
 }): ReactElement {
   const {
     register,
     formState: { errors },
     handleSubmit
-  } = useForm<FormData>({ defaultValues: {} })
+  } = useForm<FormData>({ defaultValues: { username } })
   const isInvalid = errors.username
 
   // TODO: add email validation

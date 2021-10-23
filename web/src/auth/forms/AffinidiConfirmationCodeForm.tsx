@@ -3,19 +3,27 @@ import clsx from 'clsx'
 import React, { ReactElement, ReactNode } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitButton } from '~/lib/forms/SubmitButton'
-import { dispatchError } from '~/store'
+import { dispatchAlert, dispatchError } from '~/store'
 import { AFFINIDI_OPTIONS } from '~/config'
+import { Button } from '~/ui/utils/buttons'
 
 type FormData = {
   code: string // email or phone number
 }
 
+export type ConfirmationResult = {
+  wallet?: unknown
+  error?: Error
+}
+
 export function AffinidiConfirmationCodeForm({
+  username,
   userToken,
   onFinish
 }: {
+  username: string
   userToken: string
-  onFinish: (result: { wallet?: unknown; error?: Error }) => void
+  onFinish: (res: ConfirmationResult) => void
 }): ReactElement {
   const {
     register,
@@ -35,6 +43,20 @@ export function AffinidiConfirmationCodeForm({
         code
       )
       onFinish({ wallet })
+    } catch (e) {
+      const error = e as Error
+      dispatchError(error)
+      onFinish({ error })
+    }
+  }
+
+  async function resendCode() {
+    try {
+      await AffinidiWallet.resendSignUpConfirmationCode(
+        username,
+        AFFINIDI_OPTIONS
+      )
+      dispatchAlert('info', 'Code is sent')
     } catch (error) {
       dispatchError(error as Error)
     }
@@ -46,7 +68,7 @@ export function AffinidiConfirmationCodeForm({
         <input
           type="text"
           name="code"
-          ref={register({ required: true })}
+          ref={register({ required: true, minLength: 6, maxLength: 6 })}
           className={clsx(errors.code && 'is-invalid', 'form-control')}
           aria-invalid={!!errors.code}
           aria-label="Code"
@@ -55,7 +77,11 @@ export function AffinidiConfirmationCodeForm({
         />
         <div className="mt-2" />
         <FormFooter>
-          <SubmitButton title="Submit" disabled={!!isInvalid} />
+          <Button classes="mx-2 btn-secondary" onClick={resendCode}>
+            Resend code
+          </Button>
+
+          <SubmitButton title="Verify code" disabled={!!isInvalid} />
         </FormFooter>
       </form>
     </div>

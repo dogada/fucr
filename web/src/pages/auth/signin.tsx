@@ -4,24 +4,29 @@ import Button from 'react-bootstrap/Button'
 import { useRouter } from 'next/router'
 import { useMe } from '~/store'
 import { AffinidiSignInForm } from '~/auth/forms/AffinidiSignInForm'
-import { AffinidiConfirmationCodeForm } from '~/auth/forms/AffinidiConfirmationCodeForm'
+import {
+  AffinidiConfirmationCodeForm,
+  ConfirmationResult
+} from '~/auth/forms/AffinidiConfirmationCodeForm'
 
 type Screen = 'username' | 'code'
 
 const LoginPage: React.FunctionComponent = () => {
   const router = useRouter()
   const [screen, setScreen] = React.useState<Screen>('username')
+  const [username, setUsername] = React.useState<string>('')
   const [token, setToken] = React.useState<unknown>()
   const { dispatch } = useMe()
-  function login(user) {
-    console.log('login', user)
-    if (!user) return
+
+  function onConfirmation({ wallet, error }: ConfirmationResult) {
+    if (error) return setScreen('username')
     // TODO: prompt user to export account first
     dispatch('me/init')
     router.push('/')
   }
   function onUsername({ username, token }) {
     console.log('onUser', { username, token })
+    setUsername(username)
     setToken(token)
     setScreen('code')
   }
@@ -31,11 +36,14 @@ const LoginPage: React.FunctionComponent = () => {
         Sign in <small className="text-muted">(managed by Affinidi)</small>
       </h1>
 
-      {screen === 'username' && <AffinidiSignInForm onFinish={onUsername} />}
+      {screen === 'username' && (
+        <AffinidiSignInForm username={username} onFinish={onUsername} />
+      )}
       {screen === 'code' ? (
         <AffinidiConfirmationCodeForm
+          username={username}
           userToken={token as string}
-          onFinish={login}
+          onFinish={onConfirmation}
         />
       ) : null}
 
