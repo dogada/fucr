@@ -61,12 +61,6 @@
         "echo Starting new release..."
       ],
       "after:bump": "npm run build",
-      "after:git:release": [
-        "docker tag fucr_web:latest registry.gitlab.com/fucr/fucr/fucr_web:latest",
-        "docker tag fucr_web:latest registry.gitlab.com/fucr/fucr/fucr_web:${version}",
-        "docker push registry.gitlab.com/fucr/fucr/fucr_web:${version}",
-        "docker push registry.gitlab.com/fucr/fucr/fucr_web:latest"
-      ],
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     },
     "github": {
