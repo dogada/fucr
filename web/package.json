@@ -17,6 +17,7 @@
     "check": "npm run lint-only-errors && npm run type-check"
   },
   "dependencies": {
+    "@affinidi/wallet-browser-sdk": "^6.0.0-beta.20",
     "@cloudfour/simple-svg-placeholder": "^1.0.2",
     "@storeon/localstorage": "^1.4.0",
     "bootstrap": "^4.6.0",

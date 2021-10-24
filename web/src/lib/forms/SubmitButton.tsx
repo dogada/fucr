@@ -8,11 +8,7 @@ export function SubmitButton({
   disabled?: boolean
 }): ReactElement {
   return (
-    <button
-      type="submit"
-      disabled={disabled}
-      className="btn btn-sm btn-primary"
-    >
+    <button type="submit" disabled={disabled} className="btn btn-primary">
       {title}
     </button>
   )

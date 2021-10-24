@@ -15,7 +15,7 @@ export function Button({
   return (
     <button
       aria-label={ariaLabel}
-      className={clsx('btn btn-sm font-weight-bold', classes)}
+      className={clsx('btn font-weight-bold', classes)}
       onClick={onClick}
     >
       {children}
@@ -33,7 +33,7 @@ export function btnProps(
   onClick: () => void
 } {
   return {
-    className: clsx('btn btn-sm font-weight-bold', classes),
+    className: clsx('btn font-weight-bold', classes),
     onClick
   }
 }
