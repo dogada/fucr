@@ -11,3 +11,22 @@ services:
       - NODE_ENV=production
       - DEBUG
       - WEBSITE_URL
+      - VIRTUAL_HOST=${DOMAIN}
+      - VIRTUAL_PORT=3000
+      - HTTPS_METHOD=noredirect
+    networks:
+      # - webproxy
+      - default
+      - traefik-public
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.wikiket.entrypoints=${ENTRYPOINTS}
+        - traefik.http.routers.wikiket.tls=${TLS:-false}
+        - traefik.http.routers.wikiket.rule=Host(`${DOMAIN}`)
+        - traefik.http.services.wikiket.loadbalancer.server.port=3000
+networks:
+  traefik-public:
+    external: true
