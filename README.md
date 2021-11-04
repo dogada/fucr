@@ -7,3 +7,9 @@ Each piece of content is signed by the author using cryptography (as in blockcha
 We do not own or control your data. Your data belongs to you. We simply provide a way to distribute your data to technologically and politically independent data providers in order to minimize the risk of censorship of any kind.
 
 We believe that corporate or government censorship should and can be replaced by individual responsibility. If you create and share the good things, why should someone have the right to ban you? If someone does bad things, the police should take care of it, not the censors.
+
+# Generate a RSA key for did:ipid
+
+```
+openssl genpkey -algorithm RSA -out key.pem
+```
